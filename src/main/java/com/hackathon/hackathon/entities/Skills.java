@@ -24,28 +24,16 @@ public class Skills {
     @Column(name = "years_of_experience")
     private int yearsOfExperience;
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Employee employee;
-
     public Skills() {
         super();
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Skills(int id, String skills, String domain, String skill_level, int yearsOfExperience, Employee emp) {
+    public Skills(int id, String skills, String domain, String skill_level, int yearsOfExperience) {
         this.id = id;
         this.skills = skills;
         this.domain = domain;
         this.skill_level = skill_level;
         this.yearsOfExperience = yearsOfExperience;
-        this.employee = emp;
     }
 
     public int getId() {

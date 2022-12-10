@@ -19,14 +19,26 @@ public class Employee {
     @Column(name = "location")
     private String location;
 
+    public Skills getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Skills skills) {
+        this.skills = skills;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Skills skills;
+
     public Employee(){
         super();
     }
-    public Employee(int employeeId, String email, String fullName, String location) {
+    public Employee(int employeeId, String email, String fullName, String location, Skills skills) {
         this.employeeId = employeeId;
         this.email = email;
         this.fullName = fullName;
         this.location = location;
+        this.skills = skills;
     }
     public int getEmployeeId() {
         return employeeId;

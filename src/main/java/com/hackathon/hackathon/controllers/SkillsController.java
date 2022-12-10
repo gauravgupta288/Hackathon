@@ -8,8 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
+import java.util.List;
 @RestController
 public class SkillsController {
     @Autowired
@@ -26,20 +25,5 @@ public class SkillsController {
         return null;
     }
 
-    /**
-     * Add new skill
-     *
-     * @return Skills object
-     */
-    @PostMapping("/skills")
-    public ResponseEntity<Skills> addNewSkill(@RequestBody Skills skills){
-        Skills s;
-        try{
-            s = skillsRepository.save(skills);
-            return ResponseEntity.status(HttpStatus.CREATED).body(s);
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
 
 }
