@@ -21,25 +21,32 @@ public class Skills {
     @Column(name = "skill_level")
     private String skill_level;
 
-    @Column(name = "yearsOfExperience")
+    @Column(name = "years_of_experience")
     private int yearsOfExperience;
 
+    public Employee getEmployee() {
+        return employee;
+    }
+
     @OneToOne(cascade = CascadeType.ALL)
-    private Employee emp;
+    private Employee employee;
 
     public Skills() {
         super();
     }
 
-    public Skills(int id, String skills, String domain, String skill_level, int yearsOfExperience) {
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Skills(int id, String skills, String domain, String skill_level, int yearsOfExperience, Employee emp) {
         this.id = id;
         this.skills = skills;
         this.domain = domain;
         this.skill_level = skill_level;
         this.yearsOfExperience = yearsOfExperience;
+        this.employee = emp;
     }
-
-
 
     public int getId() {
         return id;

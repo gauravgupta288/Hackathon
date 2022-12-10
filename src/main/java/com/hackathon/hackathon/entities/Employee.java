@@ -7,18 +7,27 @@ import jakarta.persistence.*;
 public class Employee {
 
     @Id
-    @Column(name = "emp_id")
+    @Column(name = "employeeId")
     private int employeeId;
 
-    @Column(name = "emp_email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "emp_full_name")
+    @Column(name = "fullName")
     private String fullName;
 
-    @Column(name = "emp_location")
+    @Column(name = "location")
     private String location;
 
+    public Employee(){
+        super();
+    }
+    public Employee(int employeeId, String email, String fullName, String location) {
+        this.employeeId = employeeId;
+        this.email = email;
+        this.fullName = fullName;
+        this.location = location;
+    }
     public int getEmployeeId() {
         return employeeId;
     }
@@ -51,13 +60,5 @@ public class Employee {
         this.location = location;
     }
 
-    public Employee(){
-        super();
-    }
-    public Employee(int employeeId, String email, String fullName, String location) {
-        this.employeeId = employeeId;
-        this.email = email;
-        this.fullName = fullName;
-        this.location = location;
-    }
+
 }
