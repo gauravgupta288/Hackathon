@@ -1,9 +1,7 @@
 package com.hackathon.hackathon.controllers;
 
 import com.hackathon.hackathon.dao.SkillsRepository;
-import com.hackathon.hackathon.entities.Employee;
 import com.hackathon.hackathon.entities.Skills;
-import com.hackathon.hackathon.services.EmployeeServices;
 import com.hackathon.hackathon.services.SkillsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
