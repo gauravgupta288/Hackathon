@@ -1,17 +1,16 @@
 package com.hackathon.hackathon.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Entity
 @Table(name = "Skills")
 public class Skills {
 
     @Id
-    @Column(name = "skill_id")
-    private int skill_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "skills")
     private String skills;
@@ -25,28 +24,29 @@ public class Skills {
     @Column(name = "yearsOfExperience")
     private int yearsOfExperience;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Employee emp;
+
     public Skills() {
         super();
     }
 
-    public Skills(int skill_id, String skills, String domain, String skill_level, int yearsOfExperience, int employeeId) {
-        this.skill_id = skill_id;
+    public Skills(int id, String skills, String domain, String skill_level, int yearsOfExperience) {
+        this.id = id;
         this.skills = skills;
         this.domain = domain;
         this.skill_level = skill_level;
         this.yearsOfExperience = yearsOfExperience;
-        this.employeeId = employeeId;
     }
 
-    @Column(name = "emp_id")
-    private int employeeId;
 
-    public int getSkill_id() {
-        return skill_id;
+
+    public int getId() {
+        return id;
     }
 
-    public void setSkill_id(int skill_id) {
-        this.skill_id = skill_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSkills() {
@@ -81,11 +81,4 @@ public class Skills {
         this.yearsOfExperience = yearsOfExperience;
     }
 
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
 }

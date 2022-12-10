@@ -1,9 +1,6 @@
 package com.hackathon.hackathon.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Employee")
@@ -16,14 +13,11 @@ public class Employee {
     @Column(name = "emp_email")
     private String email;
 
-    @Column(name = "emp_fullname")
+    @Column(name = "emp_full_name")
     private String fullName;
 
-    @Column(name = "emp_loaction")
+    @Column(name = "emp_location")
     private String location;
-
-    @Column(name = "emp_skills")
-    private Skills skills;
 
     public int getEmployeeId() {
         return employeeId;
