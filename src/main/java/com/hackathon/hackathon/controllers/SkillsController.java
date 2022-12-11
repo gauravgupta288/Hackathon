@@ -46,7 +46,7 @@ public class SkillsController {
     }
 
     @GetMapping("/skills/{id}")
-    public ResponseEntity<Employee> deleteSkill(@PathVariable("id") int id){
+    public ResponseEntity<Employee> getASkill(@PathVariable("id") int id){
         Employee emp = employeeRepository.findById(id);
         if(emp == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -54,12 +54,13 @@ public class SkillsController {
         return ResponseEntity.status(HttpStatus.OK).body(emp);
     }
 
-    @DeleteMapping("/skills/{name}")
-    public ResponseEntity<Employee> deleteASkill(@PathVariable("name") String name){
-        Optional<Skills> skill = skillsServices.getSkillIdBySkillName(name, );
+    @DeleteMapping("/skills/{id}/{name}")
+    public ResponseEntity<Employee> deleteASkill(@PathVariable int id, @PathVariable String name){
+        Optional<Skills> skill = skillsServices.getSkillIdBySkillName(name, id);
         if(skill == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        return ResponseEntity.status(HttpStatus.OK).build();
+        skillsRepository.deleteById(skill.get().getId());
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

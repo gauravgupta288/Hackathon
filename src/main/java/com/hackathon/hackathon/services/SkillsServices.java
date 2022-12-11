@@ -17,7 +17,7 @@ public class SkillsServices {
         List<Skills> skillDbData = skillsRepository.findAll();
 
         Optional<Skills> result = skillDbData.stream().filter(skill ->
-                name.equals(skill.getSkill()) && id == skill.getId()).findAny();
+                name.equals(skill.getSkill()) && id == skill.getEmp_id()).findAny();
 
         return result;
     }

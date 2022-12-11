@@ -26,6 +26,10 @@ public class Skills {
     @Column(name = "years_of_experience")
     private int yearsOfExperience;
 
-    @Column(name = "emp_id")
-    private int empId;
+    private int emp_id;
+
+    public void Skills(int emp_id){
+        this.emp_id = emp_id;
+    }
+
 }
