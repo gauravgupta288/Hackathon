@@ -4,5 +4,5 @@ import com.hackathon.hackathon.entities.Skills;
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface SkillsRepository extends CrudRepository<Skills, String> {
+public interface SkillsRepository extends CrudRepository<Skills, Integer> {
 }
