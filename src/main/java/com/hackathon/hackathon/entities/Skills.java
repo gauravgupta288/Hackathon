@@ -26,4 +26,6 @@ public class Skills {
     @Column(name = "years_of_experience")
     private int yearsOfExperience;
 
+    @Column(name = "emp_id")
+    private int empId;
 }

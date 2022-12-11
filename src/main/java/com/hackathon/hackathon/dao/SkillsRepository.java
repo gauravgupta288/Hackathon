@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 
 public interface SkillsRepository extends JpaRepository<Skills, Integer> {
+
 }
