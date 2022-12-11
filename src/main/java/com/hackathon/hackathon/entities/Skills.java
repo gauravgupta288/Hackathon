@@ -1,25 +1,27 @@
 package com.hackathon.hackathon.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Entity
-@Table(name = "skills")
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Data
+
 public class Skills {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private int id;
 
-    @Column(name = "domain")
     private String domain;
 
     @Column(name = "skill_level")
-    private String skill_level;
+    private String skillLevel;
 
-    @Column(name = "skill")
-    private String skills;
+    private String skill;
 
     @Column(name = "years_of_experience")
     private int yearsOfExperience;

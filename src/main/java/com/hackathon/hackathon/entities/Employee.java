@@ -1,10 +1,7 @@
 package com.hackathon.hackathon.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
@@ -32,8 +29,8 @@ public class Employee {
     @Column(name = "mobile")
     private long mobile;
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = Skills.class)
-    @JoinColumn(name = "fk_emp_id", referencedColumnName = "employeeId")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "emp_id", referencedColumnName = "employeeId")
     private List<Skills> skills;
 
 }

@@ -24,15 +24,7 @@ public class SkillsController {
      * @return Skills object
      */
     @PostMapping("/skills")
-    public ResponseEntity<Employee> addSkills(@RequestBody SkillRequest request){
-        try{
-            System.out.println(request.getEmployee());
-            employeeRepository.save(request.getEmployee());
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    public Employee addSkills(@RequestBody Employee employee){
+            return employeeRepository.save(employee);
     }
-
-
 }
