@@ -2,6 +2,8 @@ package com.hackathon.hackathon.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Employee")
 public class Employee {
@@ -19,31 +21,43 @@ public class Employee {
     @Column(name = "location")
     private String location;
 
-    public Skills getSkills() {
-        return skills;
-    }
+    @Column(name = "mobile")
+    private int mobile;
 
-    public void setSkills(Skills skills) {
-        this.skills = skills;
-    }
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Skills skills;
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = Skills.class)
+    @JoinColumn(name = "skills_id", referencedColumnName = "employeeId")
+    private List<Skills> skills;
 
     public Employee(){
         super();
     }
-    public Employee(int employeeId, String email, String fullName, String location, Skills skills) {
+    public Employee(int employeeId, String email, String fullName, String location, List<Skills> skills, int mobile) {
         this.employeeId = employeeId;
         this.email = email;
         this.fullName = fullName;
         this.location = location;
         this.skills = skills;
+        this.mobile = mobile;
     }
     public int getEmployeeId() {
         return employeeId;
     }
 
+    public List<Skills> getSkills() {
+        return skills;
+    }
+
+    public int getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(int mobile) {
+        this.mobile = mobile;
+    }
+
+    public void setSkills(List<Skills> skills) {
+        this.skills = skills;
+    }
     public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
     }

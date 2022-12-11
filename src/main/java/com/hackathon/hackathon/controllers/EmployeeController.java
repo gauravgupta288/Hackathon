@@ -37,7 +37,6 @@ public class EmployeeController {
     @RequestMapping(value = {"/employee"}, method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<Employee> addNewSkill(@RequestBody List<Employee> employees){
-        System.out.println("fdfs");
         try{
             System.out.println("method called");
             for(Employee emp :  employees){
