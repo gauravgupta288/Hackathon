@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,6 +62,14 @@ public class SkillsController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         skillsRepository.deleteById(skill.get().getId());
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+    @PutMapping("/skills/{id}/{name}")
+    public ResponseEntity<Employee> updateASkill(@PathVariable int id, @PathVariable String name){
+        Optional<Skills> skill = skillsServices.getSkillIdBySkillName(name, id);
+        if(skill == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

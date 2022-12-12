@@ -31,5 +31,4 @@ public class Skills {
     public void Skills(int emp_id){
         this.emp_id = emp_id;
     }
-
 }
