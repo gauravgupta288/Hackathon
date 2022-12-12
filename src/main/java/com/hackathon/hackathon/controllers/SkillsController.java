@@ -70,6 +70,8 @@ public class SkillsController {
         if(skill == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+
+        skillsRepository.updateSkill(skill.get().getId(), name);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

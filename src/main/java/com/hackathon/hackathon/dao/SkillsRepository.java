@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface SkillsRepository extends JpaRepository<Skills, Integer> {
 
-    @Query("UPDATE skills SET skill = : sn WHERE id = : id")
-    public Skills getUserSkill(@Param("id") int id, @Param("sn") String skillName);
+    @Query("UPDATE Skills s SET s.skill = :sn WHERE s.id = :id")
+    public Skills updateSkill(@Param("id") int id, @Param("sn") String skillName);
 }
