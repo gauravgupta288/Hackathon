@@ -64,14 +64,16 @@ public class SkillsController {
         skillsRepository.deleteById(skill.get().getId());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-    @PutMapping("/skills/{id}/{name}")
-    public ResponseEntity<Employee> updateASkill(@PathVariable int id, @PathVariable String name){
-        Optional<Skills> skill = skillsServices.getSkillIdBySkillName(name, id);
-        if(skill == null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+    @PutMapping("/skills/{id}")
+    public ResponseEntity<Employee> updateASkill(@PathVariable int id, @RequestBody Skills skills){
+//        Skills skill = (Skills) skillsServices.getSkillIdBySkillName(name, id);
+//        if(skill == null){
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//        }
 
-        skillsRepository.updateSkill(skill.get().getId(), name);
+        Skills skill = skillsRepository.findById(id);
+        skillsRepository.save(skills);
+//        skillsRepository.updateSkill(skill.get().getId(), name);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
