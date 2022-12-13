@@ -2,7 +2,6 @@ package com.hackathon.hackathon.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Entity
 @AllArgsConstructor
