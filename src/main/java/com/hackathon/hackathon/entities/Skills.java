@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.web.WebProperties;
 @NoArgsConstructor
 @ToString
 @Data
-
 public class Skills {
 
     @Id
