@@ -5,20 +5,12 @@ import com.hackathon.hackathon.dao.SkillsRepository;
 import com.hackathon.hackathon.entities.Employee;
 import com.hackathon.hackathon.entities.Skills;
 import com.hackathon.hackathon.services.SkillsServices;
-import com.mysql.cj.Query;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.FlushModeType;
-import jakarta.persistence.LockModeType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.orm.jpa.EntityManagerProxy;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @RestController
 public class SkillsController {
