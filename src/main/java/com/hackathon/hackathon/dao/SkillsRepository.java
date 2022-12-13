@@ -20,4 +20,5 @@ public interface SkillsRepository extends JpaRepository<Skills, Integer> {
     public void updateSkill(int id, int skillId, String skillName, int yoe, String domain, String skillLevel);
 
     public Skills findById(int id);
+
 }

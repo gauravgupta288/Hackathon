@@ -25,12 +25,21 @@ public class SkillsController {
     private SkillsServices skillsServices;
 
     /**
+     * Get all skills with employee details present on Database
+     * @return
+     */
+    @GetMapping("/skills")
+    public List<Employee> getSkills(){
+        return employeeRepository.findAll();
+    }
+
+    /**
      * Add new skill with employee data
      *
      * @return Skills object
      */
-    @PostMapping("/skills")
-    public ResponseEntity<Employee> addSkills(@RequestBody Employee employee){
+    @PostMapping("/skills/{empId}")
+    public ResponseEntity<Employee> addSkills(@RequestBody Employee employee, @PathVariable int empId){
         try{
             employeeRepository.save(employee);
             return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -39,20 +48,12 @@ public class SkillsController {
         }
     }
 
-    @GetMapping("/skills")
-    public List<Employee> getSkills(){
-        return employeeRepository.findAll();
-    }
-
-    @GetMapping("/skills/{id}")
-    public ResponseEntity<Employee> getASkill(@PathVariable("id") int id){
-        Employee emp = employeeRepository.findById(id);
-        if(emp == null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(emp);
-    }
-
+    /**
+     * Delete a skill based on name
+     * @param id skill id
+     * @param name skill name to delete
+     * @return
+     */
     @DeleteMapping("/skills/{id}/{name}")
     public ResponseEntity<Employee> deleteASkill(@PathVariable int id, @PathVariable String name){
         Skills skill = skillsServices.getSkillIdBySkillName(name, id);
@@ -62,6 +63,14 @@ public class SkillsController {
         skillsRepository.deleteById(skill.getId());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+    /**
+     * Update a skill based on skill name
+     * @param id employee id
+     * @param skillName  skill name
+     * @param skillsJson json of skill data to update
+     * @return
+     */
     @PutMapping("/skills/{id}/{skillName}")
     public ResponseEntity<Employee> updateASkill(@PathVariable int id,@PathVariable String skillName, @RequestBody Skills skillsJson){
         Skills skill = skillsServices.getSkillIdBySkillName(skillName, id);
@@ -69,7 +78,6 @@ public class SkillsController {
             skillsRepository.save(skillsJson);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
-
         skillsRepository.updateSkill(skill.getEmp_id(), skill.getId(), skillsJson.getSkill(), skillsJson.getYearsOfExperience(),
                 skillsJson.getDomain(), skillsJson.getSkillLevel());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
