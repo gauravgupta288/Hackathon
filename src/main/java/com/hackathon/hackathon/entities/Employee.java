@@ -23,8 +23,8 @@ public class Employee {
     @Column(name = "fullName")
     private String fullName;
 
-    @Column(name = "location")
-    private String location;
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "mobile")
     private long mobile;

@@ -13,12 +13,15 @@ public class SkillsServices {
 
     @Autowired
     private SkillsRepository skillsRepository;
-    public Optional<Skills> getSkillIdBySkillName(String name, int id){
+    public Skills getSkillIdBySkillName(String name, int id){
         List<Skills> skillDbData = skillsRepository.findAll();
 
         Optional<Skills> result = skillDbData.stream().filter(skill ->
-                name.equals(skill.getSkill()) && id == skill.getEmp_id()).findAny();
+                name.equals(skill.getSkill()) && id == skill.getEmp_id()).findFirst();
 
-        return result;
+        if(result.isEmpty()){
+            return null;
+        }
+        return result.get();
     }
 }

@@ -5,13 +5,19 @@ import com.hackathon.hackathon.dao.SkillsRepository;
 import com.hackathon.hackathon.entities.Employee;
 import com.hackathon.hackathon.entities.Skills;
 import com.hackathon.hackathon.services.SkillsServices;
+import com.mysql.cj.Query;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.FlushModeType;
+import jakarta.persistence.LockModeType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.orm.jpa.EntityManagerProxy;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -42,7 +48,7 @@ public class SkillsController {
     }
 
     @GetMapping("/skills")
-    public List<Employee> getSkills(@RequestBody Employee employee){
+    public List<Employee> getSkills(){
         return employeeRepository.findAll();
     }
 
@@ -57,23 +63,23 @@ public class SkillsController {
 
     @DeleteMapping("/skills/{id}/{name}")
     public ResponseEntity<Employee> deleteASkill(@PathVariable int id, @PathVariable String name){
-        Optional<Skills> skill = skillsServices.getSkillIdBySkillName(name, id);
+        Skills skill = skillsServices.getSkillIdBySkillName(name, id);
         if(skill == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        skillsRepository.deleteById(skill.get().getId());
+        skillsRepository.deleteById(skill.getId());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-    @PutMapping("/skills/{id}")
-    public ResponseEntity<Employee> updateASkill(@PathVariable int id, @RequestBody Skills skills){
-//        Skills skill = (Skills) skillsServices.getSkillIdBySkillName(name, id);
-//        if(skill == null){
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//        }
+    @PutMapping("/skills/{id}/{skillName}")
+    public ResponseEntity<Employee> updateASkill(@PathVariable int id,@PathVariable String skillName, @RequestBody Skills skillsJson){
+        Skills skill = skillsServices.getSkillIdBySkillName(skillName, id);
+        if(skill == null){
+            skillsRepository.save(skillsJson);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
 
-        Skills skill = skillsRepository.findById(id);
-        skillsRepository.save(skills);
-//        skillsRepository.updateSkill(skill.get().getId(), name);
+        skillsRepository.updateSkill(skill.getEmp_id(), skill.getId(), skillsJson.getSkill(), skillsJson.getYearsOfExperience(),
+                skillsJson.getDomain(), skillsJson.getSkillLevel());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
