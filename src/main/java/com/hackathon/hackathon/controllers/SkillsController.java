@@ -2,6 +2,7 @@ package com.hackathon.hackathon.controllers;
 
 import com.hackathon.hackathon.dao.EmployeeRepository;
 import com.hackathon.hackathon.dao.SkillsRepository;
+import com.hackathon.hackathon.dto.SkillRequest;
 import com.hackathon.hackathon.entities.Employee;
 import com.hackathon.hackathon.entities.Skills;
 import com.hackathon.hackathon.services.SkillsServices;
@@ -39,22 +40,29 @@ public class SkillsController {
      *
      * @return Skills object
      */
-    @PostMapping("/skills/{empId}")
-    public ResponseEntity<Employee> addSkills(@RequestBody Employee employee, @PathVariable int empId) {
+    @PostMapping("/skills")
+    public ResponseEntity<Employee> addSkills(@RequestBody Employee employee) {
         employee.getSkills().forEach(skill -> {
-            Skills searchResult = skillsServices.getSkillIdBySkillName(skill.getSkill(), empId);
+            Employee emp = employeeRepository.findById(employee.getEmployeeId());
+            Skills searchResult = skillsServices.getSkillIdBySkillName(skill.getSkill(), employee.getEmployeeId());
             if (searchResult == null) {
-                skillsRepository.save(skill);
+                if(emp == null){
+                    employeeRepository.save(employee);
+                }else{
+                    skillsRepository.save(skill);
+                }
             } else {
                 updateASkill(searchResult.getEmp_id(), searchResult.getSkill(), skill);
             }
         });
-        try {
-            employeeRepository.save(employee);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+//        try {
+//            Skills sk = employee.getSkills().get(0);
+//            skillsRepository.save(sk);
+//            return ResponseEntity.status(HttpStatus.CREATED).build();
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     /**

@@ -40,7 +40,7 @@ class SkillsControllerTest {
         skills.setYearsOfExperience(5);
 
         employee.setSkills(List.of(skills));
-        ResponseEntity<Employee> res = skillsController.addSkills(employee, employee.getEmployeeId());
+        ResponseEntity<Employee> res = skillsController.addSkills(employee);
         assertEquals(res.getStatusCode().value(), 201);
 
         Employee employee1 = employeeRepository.findById(1);
