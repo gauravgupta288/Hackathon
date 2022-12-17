@@ -58,7 +58,7 @@ public class EmployeeController {
                 employeeRepository.save(emp);
             }else{
                 employeeRepository.updateEmployeeInfo(emp.getFullName(), emp.getEmail(),
-                        emp.getAddress(), emp.getMobile(), emp.getEmployeeId());
+                        emp.getLocation(), emp.getMobile(), emp.getEmployeeId());
             }
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }catch (Exception e){

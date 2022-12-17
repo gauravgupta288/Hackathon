@@ -23,8 +23,8 @@ public class Employee {
     @Column(name = "fullName")
     private String fullName;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "location")
+    private String location;
 
     @Column(name = "mobile")
     private long mobile;
@@ -33,4 +33,7 @@ public class Employee {
     @JoinColumn(name = "emp_id", referencedColumnName = "employeeId")
     private List<Skills> skills;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "emp_id", referencedColumnName = "employeeId")
+    private List<Status> status;
 }
