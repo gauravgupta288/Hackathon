@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 
 public interface SkillsRepository extends JpaRepository<Skills, Integer> {
@@ -20,5 +21,11 @@ public interface SkillsRepository extends JpaRepository<Skills, Integer> {
     public void updateSkill(int id, int skillId, String skillName, int yoe, String domain, String skillLevel);
 
     public Skills findById(int id);
+
+    @Query(value = "select skill from skills where domain = ?1", nativeQuery = true)
+    public Set<String> getAllSkillByDomain(String domain);
+
+    @Query(value = "select domain from skills", nativeQuery = true)
+    public Set<String> getAllDomain();
 
 }

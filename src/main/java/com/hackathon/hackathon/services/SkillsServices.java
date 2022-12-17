@@ -3,6 +3,7 @@ package com.hackathon.hackathon.services;
 import com.hackathon.hackathon.dao.SkillsRepository;
 import com.hackathon.hackathon.entities.Skills;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

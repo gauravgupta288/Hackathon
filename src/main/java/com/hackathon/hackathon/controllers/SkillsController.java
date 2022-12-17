@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class SkillsController {
@@ -100,5 +101,15 @@ public class SkillsController {
         skillsRepository.updateSkill(skill.getEmp_id(), skill.getId(), skillsJson.getSkill(), skillsJson.getYearsOfExperience(),
                 skillsJson.getDomain(), skillsJson.getSkillLevel());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("/skills/{domain}")
+    public Set<String> getSkills(@PathVariable String domain){
+        return skillsRepository.getAllSkillByDomain(domain);
+    }
+
+    @GetMapping("/skills/domain")
+    public Set<String> getDomain(){
+        return skillsRepository.getAllDomain();
     }
 }
