@@ -21,7 +21,7 @@ class EmployeeControllerTest {
         Employee emp = new Employee();
         emp.setEmployeeId(000);
         emp.setEmail("dummy@mail.com");
-        emp.setAddress("Pune");
+        emp.setLocation("Pune");
         emp.setFullName("hackathon client");
         emp.setMobile(1234);
 

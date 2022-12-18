@@ -1,10 +1,7 @@
 package com.hackathon.hackathon.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
@@ -36,4 +33,8 @@ public class Projects {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "projects_fk", referencedColumnName = "id")
     private List<Teams> teams;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "projects_fk", referencedColumnName = "id")
+    private List<MailerList> mailerList;
 }

@@ -19,12 +19,6 @@ public class MailerList {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private int empId;
+    private String email;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "mailerList_fk", referencedColumnName = "id")
-    private List<Employee> emp;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Projects projects;
 }

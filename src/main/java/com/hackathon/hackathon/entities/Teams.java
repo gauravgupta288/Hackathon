@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -31,4 +32,7 @@ public class Teams {
 
     private String leadEmail;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "teams_fk", referencedColumnName = "id")
+    private List<Employee> employees;
 }

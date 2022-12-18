@@ -28,7 +28,7 @@ class SkillsControllerTest {
         employee.setFullName(fullName);
         String email = "abc@gmail.com";
         employee.setEmail(email);
-        employee.setAddress("Pune");
+        employee.setLocation("Pune");
         employee.setMobile(976246398);
 
         Skills skills = new Skills();

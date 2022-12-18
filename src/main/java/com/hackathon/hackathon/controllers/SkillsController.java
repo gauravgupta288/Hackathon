@@ -2,7 +2,6 @@ package com.hackathon.hackathon.controllers;
 
 import com.hackathon.hackathon.dao.EmployeeRepository;
 import com.hackathon.hackathon.dao.SkillsRepository;
-import com.hackathon.hackathon.dto.SkillRequest;
 import com.hackathon.hackathon.entities.Employee;
 import com.hackathon.hackathon.entities.Skills;
 import com.hackathon.hackathon.services.SkillsServices;

@@ -18,7 +18,7 @@ public class Status {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ticketId;
 
-    private long hoursSpent;
+    private double hoursSpent;
 
     private String status;
 
