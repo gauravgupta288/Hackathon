@@ -26,9 +26,11 @@ public class Projects {
     @Temporal(TemporalType.DATE)
     private Date projectEndDate;
 
-    private String managerName;
+//    private String managerName;
+//
+//    private  String managerEmail;
 
-    private  String managerEmail;
+    private int managerId;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "projects_fk", referencedColumnName = "id")
