@@ -45,7 +45,7 @@ public class ProjectServices {
         projectRepository.updateProject(projectId, projects.getManagerId(), projects.getProjectStartDate(),
         projects.getProjectEndDate(), projects.getProjectName());
 
-        return findProjectByName(projects.getProjectName());
+        return findProjectById(projectId);
     }
 
 }
