@@ -1,0 +1,43 @@
+{
+	"projectName": "Unitrends",
+	"projectStartDate": "2019-07-04",
+	"projectEndDate": "2022-07-04",
+	"managerId" : 422,
+	"mailerList": [{
+		"email": "all@afour.com"
+	}],
+	"teams": [{
+		"teamName": "Unitrends manual",
+		"teamStartDate": "2019-07-04",
+		"teamEndDate": "2019-07-04",
+        "teamLeadId" : 410,
+
+		"employees": [{
+			"employeeId": 422,
+			"email": "gayatri@aft.com",
+			"fullName": "gayatri s",
+			"location": "Pune",
+			"mobile": 42124,
+			"status": [{
+				"hoursSpent": 3,
+				"status": "Completed",
+				"comment": "Completed"
+			}],
+			"skills": [{
+					"domain": "Tech",
+					"skillLevel": "manual",
+					"skill": "storage",
+					"yearsOfExperience": 11,
+					"emp_id": 422
+				},
+				{
+					"domain": "Tech",
+					"skillLevel": "Advance",
+					"skill": "Python",
+					"yearsOfExperience": 3,
+					"emp_id": 422
+				}
+			]
+		}]
+	}]
+}

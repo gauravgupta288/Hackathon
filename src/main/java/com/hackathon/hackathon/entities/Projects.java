@@ -26,10 +26,6 @@ public class Projects {
     @Temporal(TemporalType.DATE)
     private Date projectEndDate;
 
-//    private String managerName;
-//
-//    private  String managerEmail;
-
     private int managerId;
 
     @OneToMany(cascade = CascadeType.ALL)

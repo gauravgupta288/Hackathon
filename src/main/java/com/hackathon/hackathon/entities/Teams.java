@@ -28,9 +28,7 @@ public class Teams {
     @Temporal(TemporalType.DATE)
     private Date teamEndDate;
 
-    private String leadName;
-
-    private String leadEmail;
+    private int teamLeadId;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "teams_fk", referencedColumnName = "id")

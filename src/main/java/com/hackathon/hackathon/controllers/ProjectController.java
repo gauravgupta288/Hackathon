@@ -27,8 +27,6 @@ public class ProjectController {
             Projects res = projectServices.findProjectByName(projects.getProjectName());
             if(res == null){
                 projectRepository.save(projects);
-            }else{
-                updateProject(projects);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,18 +49,16 @@ public class ProjectController {
         return projects;
     }
 
-    @PutMapping("/project")
-    public List<Projects> updateProject(@RequestBody Projects project) {
-        List<Projects> pro = new ArrayList<>();
-        try {
-            ResponseEntity.status(HttpStatus.OK).build();
-            pro = projectRepository.findAll();
-            return pro;
-        } catch (Exception e) {
-            e.printStackTrace();
-            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    @PutMapping("/project/{id}")
+    public Projects updateProject(@PathVariable int id, @RequestBody Projects project) {
+        Projects pro = projectServices.findProjectById(id);
+        if(pro == null){
+            projectRepository.save(project);
+        }else{
+            projectServices.updateProjectByName(id ,project);
         }
-        return pro;
+
+        return project;
     }
 
 }
