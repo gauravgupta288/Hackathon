@@ -1,7 +1,6 @@
 package com.hackathon.hackathon.controllers;
 
 import com.hackathon.hackathon.dao.ProjectRepository;
-import com.hackathon.hackathon.entities.Employee;
 import com.hackathon.hackathon.entities.Projects;
 import com.hackathon.hackathon.services.ProjectServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +54,7 @@ public class ProjectController {
         if(pro == null){
             projectRepository.save(project);
         }else{
-            projectServices.updateProjectByName(id ,project);
+            projectServices.updateProject(id ,project);
         }
 
         return project;

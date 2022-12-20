@@ -41,7 +41,7 @@ public class ProjectServices {
         return pro.get();
     }
 
-    public Projects updateProjectByName(int projectId, Projects projects){
+    public Projects updateProject(int projectId, Projects projects){
         projectRepository.updateProject(projectId, projects.getManagerId(), projects.getProjectStartDate(),
         projects.getProjectEndDate(), projects.getProjectName());
 
