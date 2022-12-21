@@ -3,6 +3,7 @@ package com.hackathon.hackathon.controllers;
 import com.hackathon.hackathon.dao.ProjectRepository;
 import com.hackathon.hackathon.entities.Projects;
 import com.hackathon.hackathon.services.ProjectServices;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,7 +50,7 @@ public class ProjectController {
     }
 
     @PutMapping("/project/{id}")
-    public Projects updateProject(@PathVariable int id, @RequestBody Projects project) {
+    public Projects updateProject(@Valid @PathVariable int id, @RequestBody Projects project) {
         Projects pro = projectServices.findProjectById(id);
         if(pro == null){
             projectRepository.save(project);
